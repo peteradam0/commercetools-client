@@ -12,7 +12,6 @@ export default function MyComponent() {
         <PrimaryButton
           label='Export Data'
           iconLeft={<ExportIcon />}
-          onClick={() => console.log('Export clicked')}
         />
       </Grid>
     </Card>
