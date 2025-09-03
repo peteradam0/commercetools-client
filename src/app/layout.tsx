@@ -1,3 +1,5 @@
+import './globals.css'
+
 export default function RootLayout({
   children,
 }: {
@@ -6,7 +8,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <div>{children}</div>
+        {children}
       </body>
     </html>
   )
