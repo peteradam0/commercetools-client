@@ -12,11 +12,12 @@ import {
 } from '@commercetools-uikit/icons'
 import Spacings from '@commercetools-uikit/spacings'
 import Text from '@commercetools-uikit/text'
+import React from 'react'
 import { useState } from 'react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeCategory, setActiveCategory] = useState(null)
+  const [activeCategory, setActiveCategory] = React.useState<string>('')
 
   const menCategories = ['T-Shirts', 'Shirts', 'Pants']
   const womenCategories = ['T-Shirts', 'Blouses', 'Dresses']
@@ -73,12 +74,10 @@ export default function Header() {
                   <FlatButton
                     label='Men'
                     onClick={() => setActiveCategory('men')}
-                    isToggled={false}
                   />
                   <FlatButton
                     label='Women'
                     onClick={() => setActiveCategory('women')}
-                    isToggled={false}
                   />
                 </Spacings.Stack>
               )}
@@ -89,10 +88,10 @@ export default function Header() {
                     <IconButton
                       icon={<AngleLeftIcon />}
                       label='Back'
-                      onClick={() => setActiveCategory(null)}
+                      onClick={() => setActiveCategory('')}
                       size='small'
                     />
-                    <Text.Subheadline as='h3' capitalization='capitalize'>
+                    <Text.Subheadline as='h4'>
                       {activeCategory}
                     </Text.Subheadline>
                   </Spacings.Inline>
