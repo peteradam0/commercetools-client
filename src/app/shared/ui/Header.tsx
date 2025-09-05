@@ -24,7 +24,7 @@ export default function Header() {
 
   return (
     <header className='bg-white border-b-2 mt-0 mb-auto'>
-      <div className='max-w-full'>
+      <div className='max-w-full mx-36'>
         <Spacings.Inline
           justifyContent='space-between'
           alignItems='center'
