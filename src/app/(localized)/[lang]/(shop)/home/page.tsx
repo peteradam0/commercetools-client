@@ -1,8 +1,11 @@
+import { heroImages } from '../../../../../../public/home/heroImages'
+
+import { HeroGallery } from '@/app/shared/ui/HeroGallery/HeroGallery'
 
 export default function HomePageRoute() {
   return (
     <div>
-      <h1 className='text-3xl text-white'>Home page</h1>
+      <HeroGallery heroImages={heroImages} />
     </div>
   )
 }
