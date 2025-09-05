@@ -1,5 +1,6 @@
 'use client'
 
+import { PrimaryButton } from '@commercetools-frontend/ui-kit'
 import FlatButton from '@commercetools-uikit/flat-button'
 import Spacings from '@commercetools-uikit/spacings'
 import Text from '@commercetools-uikit/text'
@@ -28,7 +29,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className='bg-gray-50 border-t border-gray-200 mt-auto sticky bottom-0 z-10'>
+    <footer className='bg-gray-50 border-t border-gray-200'>
       <div className='max-w-screen-xl mx-auto px-4 pt-12 pb-6'>
         <Spacings.Stack scale='xl'>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 auto-rows-fr'>
@@ -81,9 +82,9 @@ export default function Footer() {
                     placeholder='Enter your email'
                     className='flex-1 px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent'
                   />
-                  <button className='px-4 py-2 bg-gray-700 text-white border-none rounded text-sm hover:bg-gray-800 transition-colors cursor-pointer'>
-                    Subscribe
-                  </button>
+                  <>
+                    <PrimaryButton label={'Subscribe'} tone='primary' />
+                  </>
                 </div>
               </Spacings.Stack>
             </Spacings.Stack>
