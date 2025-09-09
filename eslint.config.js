@@ -9,7 +9,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y'
 export default [
   // Base configurations
   js.configs.recommended,
-  
+
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
@@ -28,9 +28,9 @@ export default [
     },
     plugins: {
       '@typescript-eslint': typescriptEslint,
-      'react': react,
+      react: react,
       'react-hooks': reactHooks,
-      'import': importPlugin,
+      import: importPlugin,
       'jsx-a11y': jsxA11y,
     },
     settings: {
@@ -46,7 +46,10 @@ export default [
     },
     rules: {
       // TypeScript specific rules
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
+      ],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
@@ -103,14 +106,14 @@ export default [
 
       // Next.js specific rules
       '@next/next/no-page-custom-font': 'off',
-      
+
       // Code style
-      'quotes': ['error', 'single', { allowTemplateLiterals: true }],
-      'semi': ['error', 'never'],
+      quotes: ['error', 'single', { allowTemplateLiterals: true }],
+      semi: ['error', 'never'],
       'comma-dangle': ['error', 'always-multiline'],
       'object-curly-spacing': ['error', 'always'],
       'array-bracket-spacing': ['error', 'never'],
-      'indent': ['error', 2],
+      // indent: ['error', 2], // Disabled due to stack overflow issues with styled-components
       'linebreak-style': ['error', 'unix'],
 
       // Accessibility rules
@@ -120,7 +123,7 @@ export default [
       'jsx-a11y/no-static-element-interactions': 'warn',
     },
   },
-  
+
   // JavaScript-specific overrides
   {
     files: ['**/*.{js,jsx}'],
