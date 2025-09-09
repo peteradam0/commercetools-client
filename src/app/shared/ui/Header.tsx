@@ -14,6 +14,7 @@ import Spacings from '@commercetools-uikit/spacings'
 import Text from '@commercetools-uikit/text'
 import React from 'react'
 import { useState } from 'react'
+import styled from 'styled-components'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -21,6 +22,14 @@ export default function Header() {
 
   const menCategories = ['T-Shirts', 'Shirts', 'Pants']
   const womenCategories = ['T-Shirts', 'Blouses', 'Dresses']
+
+  const DesktopNavigationElements = styled.div`
+    display: flex;
+    @media only screen and (max-width: 768px){
+      display: none;
+    }
+
+  `
 
   return (
     <header className='bg-white border-b-2 mt-0 mb-auto'>
@@ -40,17 +49,19 @@ export default function Header() {
           </div>
 
           <Spacings.Inline alignItems='center' scale='s'>
-            <IconButton
-              icon={<SearchIcon />}
-              label='Search'
-              onClick={() => {}}
-            />
-            <IconButton
-              icon={<UserFilledIcon />}
-              label='My Account'
-              onClick={() => {}}
-            />
-            <IconButton icon={<CartIcon />} label='Cart' onClick={() => {}} />
+            <DesktopNavigationElements>
+              <IconButton
+                icon={<SearchIcon />}
+                label='Search'
+                onClick={() => { }}
+              />
+              <IconButton
+                icon={<UserFilledIcon />}
+                label='My Account'
+                onClick={() => { }}
+              />
+            </DesktopNavigationElements>
+            <IconButton icon={<CartIcon />} label='Cart' onClick={() => { }} />
 
             <div>
               <IconButton
