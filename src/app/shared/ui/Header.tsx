@@ -42,9 +42,11 @@ export default function Header() {
           <Text.Headline as='h1'>Logo</Text.Headline>
 
           <div className='md:block'>
-            <Spacings.Inline scale='l'>
-              <FlatButton as='a' href='#' label='Men' />
-              <FlatButton as='a' href='#' label='Women' />
+            <Spacings.Inline scale='xxl'>
+              <FlatButton as='a' href='#' label='WOMEN' />
+              <FlatButton as='a' href='#' label='MEN' />
+              <FlatButton as='a' href='#' label='KIDS' />
+              <FlatButton as='a' href='#' label='BABY' />
             </Spacings.Inline>
           </div>
 
