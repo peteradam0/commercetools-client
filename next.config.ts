@@ -1,10 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   eslint: {
-    dirs: ["pages", "utils"],
+    dirs: ['pages', 'utils'],
   },
-  transpilePackages: ['@commercetools-uikit', '@commercetools-frontend']
-};
+  transpilePackages: ['@commercetools-uikit', '@commercetools-frontend'],
+}
 
-export default nextConfig;
+export default nextConfig

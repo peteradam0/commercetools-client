@@ -25,10 +25,9 @@ export default function Header() {
 
   const DesktopNavigationElements = styled.div`
     display: flex;
-    @media only screen and (max-width: 768px){
+    @media only screen and (max-width: 768px) {
       display: none;
     }
-
   `
 
   return (
@@ -55,15 +54,15 @@ export default function Header() {
               <IconButton
                 icon={<SearchIcon />}
                 label='Search'
-                onClick={() => { }}
+                onClick={() => {}}
               />
               <IconButton
                 icon={<UserFilledIcon />}
                 label='My Account'
-                onClick={() => { }}
+                onClick={() => {}}
               />
             </DesktopNavigationElements>
-            <IconButton icon={<CartIcon />} label='Cart' onClick={() => { }} />
+            <IconButton icon={<CartIcon />} label='Cart' onClick={() => {}} />
 
             <div>
               <IconButton

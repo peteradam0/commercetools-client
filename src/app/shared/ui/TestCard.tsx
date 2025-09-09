@@ -9,10 +9,7 @@ export default function MyComponent() {
   return (
     <Card theme='light' type='raised'>
       <Grid>
-        <PrimaryButton
-          label='Export Data'
-          iconLeft={<ExportIcon />}
-        />
+        <PrimaryButton label='Export Data' iconLeft={<ExportIcon />} />
       </Grid>
     </Card>
   )

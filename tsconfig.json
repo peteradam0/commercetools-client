@@ -16,8 +16,7 @@
     "types": ["vitest/global"],
     "plugins": [
       {
-        "name": "next",
-        
+        "name": "next"
       },
       {
         "name": "typescript-script-plugin"

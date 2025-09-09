@@ -1,6 +1,7 @@
 # Commercetools POC Client
 
-A Next.js proof-of-concept application demonstrating integration with Commercetools Commerce Platform.
+A Next.js proof-of-concept application demonstrating integration with Commercetools Commerce
+Platform.
 
 ## Features
 
@@ -70,7 +71,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 1. Create a Commercetools project at [commercetools.com](https://commercetools.com)
 2. Generate API client credentials with appropriate scopes:
    - `manage_products`
-   - `manage_orders` 
+   - `manage_orders`
    - `view_products`
    - `manage_shopping_lists`
 3. Add sample products to test the application
