@@ -16,19 +16,18 @@ import React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
 
+const DesktopNavigationElements = styled.div`
+  display: flex;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+`
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeCategory, setActiveCategory] = React.useState<string>('')
 
   const menCategories = ['T-Shirts', 'Shirts', 'Pants']
   const womenCategories = ['T-Shirts', 'Blouses', 'Dresses']
-
-  const DesktopNavigationElements = styled.div`
-    display: flex;
-    @media only screen and (max-width: 768px) {
-      display: none;
-    }
-  `
 
   return (
     <header className='bg-white border-b-2 mt-0 mb-auto'>
