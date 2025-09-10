@@ -15,6 +15,7 @@ import {
 } from '../../../../../domains/products/domain/mockData'
 import { filterProducts } from '../../../../../domains/products/domain/search.utils'
 import { ProductFilters } from '../../../../../domains/products/domain/Product.types'
+import { useSearchParams } from 'next/navigation'
 
 const PageContainer = styled.div`
   max-width: 1200px;
@@ -81,7 +82,7 @@ export default function ProductsPage() {
 
   const filters: ProductFilters = {
     searchQuery: searchQuery.trim(),
-    categoryId: selectedCategoryIds[0], // For simplicity, only support single category for now
+    categoryId: selectedCategoryIds[0],
     inStockOnly: false,
   }
 
@@ -98,7 +99,6 @@ export default function ProductsPage() {
       if (prev.includes(categoryId)) {
         return prev.filter(id => id !== categoryId)
       } else {
-        // For simplicity, only allow one category at a time
         return [categoryId]
       }
     })
@@ -117,14 +117,12 @@ export default function ProductsPage() {
     const product = mockProducts.find(p => p.id === productId)
     if (product) {
       console.log('Adding to cart:', product.name)
-      // TODO: Integrate with cart functionality
       alert(`Added \"${product.name}\" to cart!`)
     }
   }
 
   const handleProductClick = (productId: string) => {
     console.log('Product clicked:', productId)
-    // TODO: Navigate to product detail page
   }
 
   const hasActiveFilters =
@@ -137,10 +135,14 @@ export default function ProductsPage() {
     )
   }
 
+  const searchParams = useSearchParams()
+
+  const category = searchParams.get('category')
+
   return (
     <PageContainer>
       <PageHeader>
-        <PageTitle>Products</PageTitle>
+        <PageTitle>{category ? category : 'Products'}</PageTitle>
         <PageSubtitle>
           Discover our wide range of products across different categories
         </PageSubtitle>

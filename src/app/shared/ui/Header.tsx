@@ -12,8 +12,10 @@ import {
 } from '@commercetools-uikit/icons'
 import Spacings from '@commercetools-uikit/spacings'
 import Text from '@commercetools-uikit/text'
+import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 const DesktopNavigationElements = styled.div`
@@ -22,12 +24,45 @@ const DesktopNavigationElements = styled.div`
     display: none;
   }
 `
+
+const ButtonWrapper = styled.div.withConfig({
+  shouldForwardProp: prop => prop !== 'isActive',
+})<{ isActive?: boolean }>`
+  ${({ isActive }) =>
+    isActive &&
+    `
+      & > button {
+        background-color: #f0f0f0 !important;
+        font-weight: bold !important;
+        border-bottom: 2px solid #007acc !important;
+      }
+    `}
+`
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeCategory, setActiveCategory] = React.useState<string>('')
+  const [mounted, setMounted] = useState(false)
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
   const menCategories = ['T-Shirts', 'Shirts', 'Pants']
   const womenCategories = ['T-Shirts', 'Blouses', 'Dresses']
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const handleCategoryClick = (category: string) => {
+    const categoryLower = category.toLowerCase()
+    router.push(`/en-US/products?category=${categoryLower}`)
+  }
+
+  const isActiveCategory = (category: string) => {
+    if (!mounted) return false
+    const categoryParam = searchParams.get('category')
+    return categoryParam === category.toLowerCase()
+  }
 
   return (
     <header className='bg-white border-b-2 mt-0 mb-auto'>
@@ -37,14 +72,39 @@ export default function Header() {
           alignItems='center'
           scale='m'
         >
-          <Text.Headline as='h1'>Logo</Text.Headline>
-
+          <Link href={'/'}>
+            <Text.Headline as='h1'>Logo</Text.Headline>
+          </Link>
           <div className='md:block'>
             <Spacings.Inline scale='xxl'>
-              <FlatButton as='a' href='#' label='WOMEN' />
-              <FlatButton as='a' href='#' label='MEN' />
-              <FlatButton as='a' href='#' label='KIDS' />
-              <FlatButton as='a' href='#' label='BABY' />
+              <ButtonWrapper isActive={isActiveCategory('women')}>
+                <FlatButton
+                  as='button'
+                  label='WOMEN'
+                  onClick={() => handleCategoryClick('WOMEN')}
+                />
+              </ButtonWrapper>
+              <ButtonWrapper isActive={isActiveCategory('men')}>
+                <FlatButton
+                  as='button'
+                  label='MEN'
+                  onClick={() => handleCategoryClick('MEN')}
+                />
+              </ButtonWrapper>
+              <ButtonWrapper isActive={isActiveCategory('kids')}>
+                <FlatButton
+                  as='button'
+                  label='KIDS'
+                  onClick={() => handleCategoryClick('KIDS')}
+                />
+              </ButtonWrapper>
+              <ButtonWrapper isActive={isActiveCategory('baby')}>
+                <FlatButton
+                  as='button'
+                  label='BABY'
+                  onClick={() => handleCategoryClick('BABY')}
+                />
+              </ButtonWrapper>
             </Spacings.Inline>
           </div>
 
