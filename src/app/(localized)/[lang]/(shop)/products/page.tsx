@@ -15,7 +15,7 @@ import {
 } from '../../../../../domains/products/domain/mockData'
 import { filterProducts } from '../../../../../domains/products/domain/search.utils'
 import { ProductFilters } from '../../../../../domains/products/domain/Product.types'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 
 const PageContainer = styled.div`
   max-width: 1200px;
@@ -79,6 +79,8 @@ export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([])
   const [sortBy, setSortBy] = useState<SortOption>('name-asc')
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
   const filters: ProductFilters = {
     searchQuery: searchQuery.trim(),
@@ -122,7 +124,9 @@ export default function ProductsPage() {
   }
 
   const handleProductClick = (productId: string) => {
-    console.log('Product clicked:', productId)
+    const pathSegments = window.location.pathname.split('/')
+    const lang = pathSegments[1] || 'en' // fallback to 'en' if no lang found
+    router.push(`/${lang}/products/${productId}`)
   }
 
   const hasActiveFilters =
@@ -134,8 +138,6 @@ export default function ProductsPage() {
       suggestion.toLowerCase().includes(query.toLowerCase())
     )
   }
-
-  const searchParams = useSearchParams()
 
   const category = searchParams.get('category')
 
