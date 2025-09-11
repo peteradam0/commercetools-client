@@ -4,20 +4,20 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useMemo, useState } from 'react'
 import styled from 'styled-components'
 
-import { ProductFilters } from '@/domains/products/domain/Product.types'
-import { filterProducts } from '@/domains/products/domain/search.utils'
-import { CategoryFilter } from '@/domains/products/ui/CategoryFilter'
-import { ProductSearch } from '@/domains/products/ui/ProductSearch'
+import { ProductFilters } from '@/product-listing/domain/Product.types'
+import { filterProducts } from '@/product-listing/domain/search.utils'
+import { CategoryFilter } from '@/product-listing/ui/CategoryFilter'
+import { ProductSearch } from '@/product-listing/ui/ProductSearch'
 
 import {
   mockCategories,
   mockProducts,
   searchSuggestions,
-} from '../../../../../domains/products/domain/mockData'
+} from '../../../../../product-listing/domain/mockData'
 import {
   ProductGrid,
   SortOption,
-} from '../../../../../domains/products/ui/ProductGrid'
+} from '../../../../../product-listing/ui/ProductGrid'
 
 const PageContainer = styled.div`
   max-width: 1200px;

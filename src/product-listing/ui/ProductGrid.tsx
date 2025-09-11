@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 import { EmptyState } from '@/app/shared/ui/EmptyState'
 import { Grid } from '@/app/shared/ui/Grid'
-import { Product } from '@/domains/products/domain/Product.types'
-import { ProductCard } from '@/domains/products/ui/ProductCard'
+import { Product } from '@/product-listing/domain/Product.types'
+import { ProductCard } from '@/product-listing/ui/ProductCard'
 
 const GridContainer = styled.div`
   width: 100%;

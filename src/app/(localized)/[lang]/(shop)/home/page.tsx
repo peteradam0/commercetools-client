@@ -1,4 +1,4 @@
-import { HeroGallery } from '@/app/shared/ui/HeroGallery/HeroGallery'
+import { HeroGallery } from '@/app/home/ui/HeroGallery/HeroGallery'
 
 import { heroImages } from '../../../../../../public/home/heroImages'
 

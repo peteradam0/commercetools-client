@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { FilterChip } from '@/app/shared/ui/FilterChip'
-import { Category } from '@/domains/products/domain/Product.types'
+import { Category } from '@/product-listing/domain/Product.types'
 
 const FilterContainer = styled.div`
   margin-bottom: 24px;

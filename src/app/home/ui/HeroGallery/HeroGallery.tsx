@@ -7,7 +7,7 @@ import Text from '@commercetools-uikit/text'
 import React from 'react'
 import styled from 'styled-components'
 
-import { HeroSubtitle, HeroTitle } from '@/app/shared/ui/HeroGallery/HeroTtile'
+import { HeroSubtitle, HeroTitle } from '@/app/home/ui/HeroGallery/HeroTtile'
 import ImageCard from '@/app/shared/ui/ImageCard'
 
 import { THeroImage } from '../../../../../public/home/heroImages'

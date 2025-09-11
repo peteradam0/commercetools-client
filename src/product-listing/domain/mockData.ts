@@ -1,4 +1,4 @@
-import { Category, Product } from '@/domains/products/domain/Product.types'
+import { Category, Product } from '@/product-listing/domain/Product.types'
 
 export const mockCategories: Category[] = [
   { id: '1', name: 'Electronics', slug: 'electronics' },

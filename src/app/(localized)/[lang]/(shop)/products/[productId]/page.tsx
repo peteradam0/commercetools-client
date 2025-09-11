@@ -9,11 +9,11 @@ import { notFound } from 'next/navigation'
 import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 
-import { ColorOption, ColorSelector } from '@/app/shared/ui/ColorSelector'
-import { ProductImageGallery } from '@/app/shared/ui/ProductImageGallery'
-import { ProductInfo } from '@/app/shared/ui/ProductInfo'
-import { SizeSelector } from '@/app/shared/ui/SizeSelector'
-import { mockProducts } from '@/domains/products/domain/mockData'
+import { ColorOption, ColorSelector } from '@/product-details/ColorSelector'
+import { ProductImageGallery } from '@/product-details/ProductImageGallery'
+import { ProductInfo } from '@/product-details/ProductInfo'
+import { SizeSelector } from '@/product-details/SizeSelector'
+import { mockProducts } from '@/product-listing/domain/mockData'
 
 const Container = styled.div`
   max-width: 1200px;

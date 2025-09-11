@@ -2,7 +2,7 @@ import { Card } from '@commercetools-frontend/ui-kit'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { ProductImage } from '@/domains/products/domain/Product.types'
+import { ProductImage } from '@/product-listing/domain/Product.types'
 
 const GalleryContainer = styled.div`
   display: flex;
