@@ -31,6 +31,32 @@ export default function IndexPage() {
                 </a>
               </td>
             </tr>
+            <tr>
+              <td style={{ padding: 5, border: '1px solid black' }}>
+                Product Listing
+              </td>
+              <td style={{ padding: 5, border: '1px solid black' }}>
+                <a
+                  style={{ textDecoration: 'underline' }}
+                  href={'/en-US/products?category=women'}
+                >
+                  /products
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td style={{ padding: 5, border: '1px solid black' }}>
+                Product Details Page
+              </td>
+              <td style={{ padding: 5, border: '1px solid black' }}>
+                <a
+                  style={{ textDecoration: 'underline' }}
+                  href={'/en-US/products/1'}
+                >
+                  /products/1
+                </a>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

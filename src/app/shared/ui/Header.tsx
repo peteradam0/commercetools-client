@@ -72,7 +72,7 @@ export default function Header() {
           alignItems='center'
           scale='m'
         >
-          <Link href={'/'}>
+          <Link href={'/en-US/home'}>
             <Text.Headline as='h1'>Logo</Text.Headline>
           </Link>
           <div className='md:block'>
