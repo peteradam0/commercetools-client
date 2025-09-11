@@ -1,21 +1,23 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useMemo, useState } from 'react'
 import styled from 'styled-components'
+
+import { ProductFilters } from '@/domains/products/domain/Product.types'
+import { filterProducts } from '@/domains/products/domain/search.utils'
+import { CategoryFilter } from '@/domains/products/ui/CategoryFilter'
+import { ProductSearch } from '@/domains/products/ui/ProductSearch'
+
+import {
+  mockCategories,
+  mockProducts,
+  searchSuggestions,
+} from '../../../../../domains/products/domain/mockData'
 import {
   ProductGrid,
   SortOption,
 } from '../../../../../domains/products/ui/ProductGrid'
-import { ProductSearch } from '../../../../../domains/products/ui/ProductSearch'
-import { CategoryFilter } from '../../../../../domains/products/ui/CategoryFilter'
-import {
-  mockProducts,
-  mockCategories,
-  searchSuggestions,
-} from '../../../../../domains/products/domain/mockData'
-import { filterProducts } from '../../../../../domains/products/domain/search.utils'
-import { ProductFilters } from '../../../../../domains/products/domain/Product.types'
-import { useSearchParams, useRouter } from 'next/navigation'
 
 const PageContainer = styled.div`
   max-width: 1200px;

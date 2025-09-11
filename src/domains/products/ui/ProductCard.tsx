@@ -1,8 +1,9 @@
-import React from 'react'
 import { PrimaryButton } from '@commercetools-frontend/ui-kit'
+import React from 'react'
 import styled from 'styled-components'
-import { Card } from '../../../app/shared/ui/Card'
-import { Product } from '../domain/Product.types'
+
+import { Card } from '@/app/shared/ui/Card'
+import { Product } from '@/domains/products/domain/Product.types'
 
 const ProductImage = styled.img`
   width: 100%;

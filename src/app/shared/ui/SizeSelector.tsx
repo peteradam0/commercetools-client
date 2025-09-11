@@ -1,6 +1,6 @@
+import { Label, Spacings, designTokens } from '@commercetools-frontend/ui-kit'
 import React from 'react'
 import styled from 'styled-components'
-import { Label, Spacings, designTokens } from '@commercetools-frontend/ui-kit'
 
 const SizeOptionsContainer = styled.div`
   display: flex;

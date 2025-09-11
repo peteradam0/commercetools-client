@@ -1,10 +1,10 @@
 import js from '@eslint/js'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import typescriptParser from '@typescript-eslint/parser'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
 import importPlugin from 'eslint-plugin-import'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
+import react from 'eslint-plugin-react'
+import reactHooks from 'eslint-plugin-react-hooks'
 
 export default [
   // Base configurations
@@ -37,8 +37,12 @@ export default [
       react: {
         version: 'detect',
       },
-      // Simplified import resolver settings
+      // Import resolver settings with TypeScript support
       'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
         node: {
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
@@ -103,6 +107,10 @@ export default [
       'import/no-duplicates': 'off', // Disable due to resolver issues
       'import/no-unused-modules': 'off',
       'import/no-unresolved': 'off', // Let TypeScript handle this
+
+      // Prevent excessive relative imports
+      'import/no-relative-packages': 'error',
+      'import/no-relative-parent-imports': 'warn',
 
       // Next.js specific rules
       '@next/next/no-page-custom-font': 'off',

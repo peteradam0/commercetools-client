@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Grid } from '../../../app/shared/ui/Grid'
-import { EmptyState } from '../../../app/shared/ui/EmptyState'
-import { ProductCard } from './ProductCard'
-import { Product } from '../domain/Product.types'
+
+import { EmptyState } from '@/app/shared/ui/EmptyState'
+import { Grid } from '@/app/shared/ui/Grid'
+import { Product } from '@/domains/products/domain/Product.types'
+import { ProductCard } from '@/domains/products/ui/ProductCard'
 
 const GridContainer = styled.div`
   width: 100%;

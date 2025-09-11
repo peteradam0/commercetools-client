@@ -1,21 +1,19 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
-import { notFound } from 'next/navigation'
-import styled from 'styled-components'
 import {
   PrimaryButton,
   SecondaryButton,
   Spacings,
 } from '@commercetools-frontend/ui-kit'
-import { mockProducts } from '../../../../../../domains/products/domain/mockData'
-import { ProductImageGallery } from '../../../../../shared/ui/ProductImageGallery'
-import {
-  ColorSelector,
-  ColorOption,
-} from '../../../../../shared/ui/ColorSelector'
-import { SizeSelector } from '../../../../../shared/ui/SizeSelector'
-import { ProductInfo } from '../../../../../shared/ui/ProductInfo'
+import { notFound } from 'next/navigation'
+import React, { useMemo, useState } from 'react'
+import styled from 'styled-components'
+
+import { ColorOption, ColorSelector } from '@/app/shared/ui/ColorSelector'
+import { ProductImageGallery } from '@/app/shared/ui/ProductImageGallery'
+import { ProductInfo } from '@/app/shared/ui/ProductInfo'
+import { SizeSelector } from '@/app/shared/ui/SizeSelector'
+import { mockProducts } from '@/domains/products/domain/mockData'
 
 const Container = styled.div`
   max-width: 1200px;

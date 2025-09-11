@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { SearchInput } from '../../../app/shared/ui/SearchInput'
-import { debounce } from '../domain/search.utils'
+
+import { SearchInput } from '@/app/shared/ui/SearchInput'
+import { debounce } from '@/domains/products/domain/search.utils'
 
 const SearchContainer = styled.div`
   margin-bottom: 24px;

@@ -1,4 +1,7 @@
-import { Product, ProductFilters } from './Product.types'
+import {
+  Product,
+  ProductFilters,
+} from '@/domains/products/domain/Product.types'
 
 export const filterProducts = (
   products: Product[],

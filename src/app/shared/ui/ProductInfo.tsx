@@ -1,7 +1,8 @@
+import { Spacings, Text, designTokens } from '@commercetools-frontend/ui-kit'
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Spacings, designTokens } from '@commercetools-frontend/ui-kit'
-import { Product } from '../../../domains/products/domain/Product.types'
+
+import { Product } from '@/domains/products/domain/Product.types'
 
 const ProductInfoContainer = styled.div`
   display: flex;

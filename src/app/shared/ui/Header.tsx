@@ -15,7 +15,7 @@ import Text from '@commercetools-uikit/text'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const DesktopNavigationElements = styled.div`

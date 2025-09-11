@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import { describe, it, expect, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
+
 import HomePageRoute from '../../../src/app/(localized)/[lang]/(shop)/home/page'
 
 // Mock the HeroGallery component

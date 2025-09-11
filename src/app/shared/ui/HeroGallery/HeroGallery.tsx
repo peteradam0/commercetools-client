@@ -7,10 +7,10 @@ import Text from '@commercetools-uikit/text'
 import React from 'react'
 import styled from 'styled-components'
 
-import { THeroImage } from '../../../../../public/home/heroImages'
-
 import { HeroSubtitle, HeroTitle } from '@/app/shared/ui/HeroGallery/HeroTtile'
 import ImageCard from '@/app/shared/ui/ImageCard'
+
+import { THeroImage } from '../../../../../public/home/heroImages'
 
 const HeroContainer = styled.div`
   min-height: 100vh;

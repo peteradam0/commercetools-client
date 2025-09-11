@@ -1,7 +1,8 @@
+import { Card } from '@commercetools-frontend/ui-kit'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Card } from '@commercetools-frontend/ui-kit'
-import { ProductImage } from '../../../domains/products/domain/Product.types'
+
+import { ProductImage } from '@/domains/products/domain/Product.types'
 
 const GalleryContainer = styled.div`
   display: flex;

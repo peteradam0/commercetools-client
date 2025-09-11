@@ -1,5 +1,5 @@
-import React from 'react'
 import { TextInput } from '@commercetools-frontend/ui-kit'
+import React from 'react'
 import styled from 'styled-components'
 
 const SearchContainer = styled.div`
