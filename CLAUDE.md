@@ -23,7 +23,6 @@ shared UI components.
 Each domain should contain:
 
 ```
-domains/
 ├── [domain-name]/
 │   ├── api/           # Data fetching from CommerceTools
 │   ├── domain/        # Types, interfaces, business logic
