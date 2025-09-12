@@ -4,7 +4,6 @@ import FlatButton from '@commercetools-uikit/flat-button'
 import IconButton from '@commercetools-uikit/icon-button'
 import {
   AngleLeftIcon,
-  CartIcon,
   CloseIcon,
   SearchIcon,
   StackIcon,
@@ -17,6 +16,8 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import React from 'react'
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+
+import { CartIconWithCount } from './CartIconWithCount'
 
 const DesktopNavigationElements = styled.div`
   display: flex;
@@ -121,7 +122,7 @@ export default function Header() {
                 onClick={() => {}}
               />
             </DesktopNavigationElements>
-            <IconButton icon={<CartIcon />} label='Cart' onClick={() => {}} />
+            <CartIconWithCount />
 
             <div>
               <IconButton
