@@ -118,11 +118,6 @@ export default function CartPage({ params }: CartPageProps) {
     router.push(`/${lang}/products`)
   }
 
-  const handleCheckout = () => {
-    console.log('Proceeding to checkout...')
-    alert('Checkout functionality will be implemented in the next phase.')
-  }
-
   const handleUpdateQuantity = async (itemId: string, quantity: number) => {
     try {
       await updateCartItem({ itemId, quantity })
@@ -217,7 +212,7 @@ export default function CartPage({ params }: CartPageProps) {
           <CartSummary
             summary={cart.summary}
             onContinueShopping={handleContinueShopping}
-            onCheckout={handleCheckout}
+            onCheckout={() => {}}
             isCheckoutDisabled={isLoading}
           />
         </CartSummarySection>

@@ -1,3 +1,4 @@
+import { ColorOption } from '@/product-details/ColorSelector'
 import { Category, Product } from '@/product-listing/domain/Product.types'
 
 export const mockCategories: Category[] = [
@@ -8,6 +9,36 @@ export const mockCategories: Category[] = [
   { id: '5', name: 'Books', slug: 'books' },
   { id: '6', name: 'Health & Beauty', slug: 'health-beauty' },
 ]
+
+export const getProductVariations = (): {
+  colors: ColorOption[]
+  sizes: string[]
+} => {
+  return {
+    colors: [
+      { id: 'black', name: 'Black', hex: '#000000' },
+      { id: 'white', name: 'White', hex: '#ffffff' },
+      { id: 'navy', name: 'Navy', hex: '#001f3f' },
+      { id: 'gray', name: 'Gray', hex: '#808080' },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  }
+}
+
+export const getColorImages = (colorId: string, productName: string) => {
+  const colorImageMap: Record<string, string[]> = {
+    black: ['/clothing-black-1.jpg', '/clothing-black-2.jpg'],
+    white: ['/clothing-white-1.jpg', '/clothing-white-2.jpg'],
+    navy: ['/clothing-navy-1.jpg', '/clothing-navy-2.jpg'],
+    gray: ['/clothing-gray-1.jpg', '/clothing-gray-2.jpg'],
+  }
+
+  const urls = colorImageMap[colorId] || []
+  return urls.map((url, index) => ({
+    url,
+    alt: `${productName} ${colorId} ${index + 1}`,
+  }))
+}
 
 export const mockProducts: Product[] = [
   {

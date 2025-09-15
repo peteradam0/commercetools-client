@@ -9,11 +9,16 @@ import { notFound } from 'next/navigation'
 import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 
+import { useCart } from '@/cart/domain/useCart'
 import { ColorOption, ColorSelector } from '@/product-details/ColorSelector'
 import { ProductImageGallery } from '@/product-details/ProductImageGallery'
 import { ProductInfo } from '@/product-details/ProductInfo'
 import { SizeSelector } from '@/product-details/SizeSelector'
-import { mockProducts } from '@/product-listing/domain/mockData'
+import {
+  getColorImages,
+  getProductVariations,
+  mockProducts,
+} from '@/product-listing/domain/mockData'
 
 const Container = styled.div`
   max-width: 1200px;
@@ -54,38 +59,6 @@ const WishlistButton = styled(SecondaryButton)`
   min-width: 150px;
 `
 
-// Mock data for clothing variations
-const getProductVariations = (): {
-  colors: ColorOption[]
-  sizes: string[]
-} => {
-  return {
-    colors: [
-      { id: 'black', name: 'Black', hex: '#000000' },
-      { id: 'white', name: 'White', hex: '#ffffff' },
-      { id: 'navy', name: 'Navy', hex: '#001f3f' },
-      { id: 'gray', name: 'Gray', hex: '#808080' },
-    ],
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-  }
-}
-
-// Mock color-specific images
-const getColorImages = (colorId: string, productName: string) => {
-  const colorImageMap: Record<string, string[]> = {
-    black: ['/clothing-black-1.jpg', '/clothing-black-2.jpg'],
-    white: ['/clothing-white-1.jpg', '/clothing-white-2.jpg'],
-    navy: ['/clothing-navy-1.jpg', '/clothing-navy-2.jpg'],
-    gray: ['/clothing-gray-1.jpg', '/clothing-gray-2.jpg'],
-  }
-
-  const urls = colorImageMap[colorId] || []
-  return urls.map((url, index) => ({
-    url,
-    alt: `${productName} ${colorId} ${index + 1}`,
-  }))
-}
-
 interface ProductDetailsPageProps {
   params: Promise<{
     productId: string
@@ -124,20 +97,20 @@ export default function ProductDetailsPage({
     setSelectedSize(size)
   }
 
-  const handleAddToCart = () => {
+  const { addToCart } = useCart()
+
+  const handleAddToCart = async () => {
     if (!selectedSize) {
       alert('Please select a size')
       return
     }
-
     console.log('Adding to cart:', {
       productId: product.id,
       color: selectedColor.name,
       size: selectedSize,
     })
-    alert(
-      `Added "${product.name}" (${selectedColor.name}, ${selectedSize}) to cart!`
-    )
+
+    await addToCart({ productId: product.id })
   }
 
   const handleAddToWishlist = () => {

@@ -88,7 +88,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const getProductById = useCallback(
     async (productId: string): Promise<Product | null> => {
       const { mockProducts } = await import('./mockProducts')
-      return mockProducts[productId] || null
+      return mockProducts['product-' + productId] || null
     },
     []
   )
