@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     dirs: ['pages', 'utils'],
   },
   transpilePackages: ['@commercetools-uikit', '@commercetools-frontend'],
+  compiler: {
+    styledComponents: true,
+  },
 }
 
 export default nextConfig
