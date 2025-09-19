@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useMemo, useState } from 'react'
 import styled from 'styled-components'
 
+import { useCart } from '@/cart/domain/useCart'
 import { ProductFilters } from '@/product-listing/domain/Product.types'
 import { filterProducts } from '@/product-listing/domain/search.utils'
 import { CategoryFilter } from '@/product-listing/ui/CategoryFilter'
@@ -83,6 +84,7 @@ export default function ProductsPage() {
   const [sortBy, setSortBy] = useState<SortOption>('name-asc')
   const router = useRouter()
   const searchParams = useSearchParams()
+  const { addToCart } = useCart()
 
   const filters: ProductFilters = {
     searchQuery: searchQuery.trim(),
@@ -120,8 +122,7 @@ export default function ProductsPage() {
   const handleAddToCart = (productId: string) => {
     const product = mockProducts.find(p => p.id === productId)
     if (product) {
-      console.log('Adding to cart:', product.name)
-      alert(`Added \"${product.name}\" to cart!`)
+      addToCart({ productId: product.id })
     }
   }
 
