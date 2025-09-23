@@ -100,7 +100,7 @@ const ButtonGroup = styled.div`
   }
 `
 
-interface ShippingFormProps {
+type ShippingFormProps = {
   initialData?: ShippingAddress
   onSubmit: (address: ShippingAddress) => void
   onCancel?: () => void

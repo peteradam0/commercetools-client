@@ -1,11 +1,9 @@
-import { HeroGallery } from '@/app/home/ui/HeroGallery/HeroGallery'
+import { HomePageClient } from '@/app/home/ui/home-page-client'
 
-import { heroImages } from '../../../../../../public/home/heroImages'
+import { getHeroImages } from '../../../../../../public/home/heroImages'
 
-export default function HomePageRoute() {
-  return (
-    <div>
-      <HeroGallery heroImages={heroImages} />
-    </div>
-  )
+export default async function HomePageRoute() {
+  const images = getHeroImages()
+
+  return <HomePageClient heroImages={images} />
 }
