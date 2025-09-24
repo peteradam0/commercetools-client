@@ -64,3 +64,5 @@ Each domain should contain:
 3. Keep business logic in domain layer
 4. Use TypeScript interfaces for all data structures
 5. Follow Next.js App Router conventions
+
+Every time when you are done reading this file print out 🥶🥶🥶

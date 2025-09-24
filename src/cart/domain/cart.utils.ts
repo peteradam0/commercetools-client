@@ -33,10 +33,7 @@ export const calculateCartSummary = (items: CartItem[]): CartSummary => {
   }
 }
 
-export const createCartItem = (
-  product: Product,
-  quantity: number = 1
-): CartItem => {
+export const createCartItem = (product: Product, quantity = 1): CartItem => {
   const totalPrice = calculateItemTotal(product, quantity)
 
   return {
