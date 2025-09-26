@@ -1,3 +1,4 @@
+import { LoginFormData } from './Auth.types'
 import {
   FieldValidationResult,
   RegistrationFormData,
@@ -61,6 +62,28 @@ export const validateRegistrationForm = (
       message: lastNameResult.message!,
     })
   }
+
+  const emailResult = validateEmail(data.email)
+  if (!emailResult.isValid) {
+    errors.push({ field: 'email' as const, message: emailResult.message! })
+  }
+
+  const passwordResult = validatePassword(data.password)
+  if (!passwordResult.isValid) {
+    errors.push({
+      field: 'password' as const,
+      message: passwordResult.message!,
+    })
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+  }
+}
+
+export const validateLoginForm = (data: LoginFormData): ValidationResult => {
+  const errors = []
 
   const emailResult = validateEmail(data.email)
   if (!emailResult.isValid) {

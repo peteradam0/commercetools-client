@@ -17,6 +17,8 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
+import { useAuth } from '@/auth/domain/AuthContext'
+
 import { CartIconWithCount } from './CartIconWithCount'
 
 const DesktopNavigationElements = styled.div`
@@ -46,6 +48,7 @@ export default function Header() {
   const [mounted, setMounted] = useState(false)
   const router = useRouter()
   const searchParams = useSearchParams()
+  const { user, isAuthenticated, logout } = useAuth()
 
   const menCategories = ['T-Shirts', 'Shirts', 'Pants']
   const womenCategories = ['T-Shirts', 'Blouses', 'Dresses']
@@ -116,11 +119,21 @@ export default function Header() {
                 label='Search'
                 onClick={() => {}}
               />
-              <IconButton
-                icon={<UserFilledIcon />}
-                label='My Account'
-                onClick={() => {}}
-              />
+              {isAuthenticated ? (
+                <Spacings.Inline scale='xs'>
+                  <Text.Detail>{user?.firstName || 'My Account'}</Text.Detail>
+                  <FlatButton label='Logout' onClick={logout} />
+                </Spacings.Inline>
+              ) : (
+                <Spacings.Inline scale='xs'>
+                  <Link href='/en-US/login'>
+                    <FlatButton label='Login' />
+                  </Link>
+                  <Link href='/en-US/register'>
+                    <FlatButton label='Register' />
+                  </Link>
+                </Spacings.Inline>
+              )}
             </DesktopNavigationElements>
             <CartIconWithCount />
 
@@ -139,6 +152,25 @@ export default function Header() {
             <Spacings.Stack scale='s'>
               <div className='pt-2 pb-3 border-t-slate-200'>
                 <Text.Detail tone='secondary'>Locale: </Text.Detail>
+              </div>
+
+              {/* Authentication section */}
+              <div className='pt-2 pb-3 border-b border-gray-200'>
+                {isAuthenticated ? (
+                  <Spacings.Stack scale='xs'>
+                    <Text.Detail>Welcome, {user?.firstName}</Text.Detail>
+                    <FlatButton label='Logout' onClick={logout} />
+                  </Spacings.Stack>
+                ) : (
+                  <Spacings.Stack scale='xs'>
+                    <FlatButton as='a' href='/en-US/login' label='Login' />
+                    <FlatButton
+                      as='a'
+                      href='/en-US/register'
+                      label='Register'
+                    />
+                  </Spacings.Stack>
+                )}
               </div>
 
               {!activeCategory && (
