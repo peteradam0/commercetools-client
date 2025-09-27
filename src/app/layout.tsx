@@ -1,3 +1,4 @@
+import { QueryProvider } from '../lib/QueryProvider'
 import StyledComponentsRegistry from '../lib/StyledComponentsRegistry'
 import './globals.css'
 
@@ -9,7 +10,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <QueryProvider>{children}</QueryProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   )

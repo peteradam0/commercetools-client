@@ -1,13 +1,20 @@
 # CODE.md - Project Context
 
+# Developer Context
+
+- this is not an enterprise-level project.
+- provide simple and direct solutions
+
 ## Project Overview
 
-CommerceTools e-commerce application built with Next.js, TypeScript, and domain-driven architecture.
+- this is a Proof of Concept for CommerceTools a headless e-commerce solution
+- start with the most obvious solution that works
+- application built with Next.js, TypeScript, and domain-driven architecture
 
 ## Tech Stack
 
 - **Framework**: Next.js 14+ (App Router)
-- **Language**: TypeScript
+- **Language**: TypeScript 100%, strictin mode enforced `tsconfig.json`
 - **Styling**: Styled Components
 - **UI Library**: @commercetools-frontend/ui-kit
 - **Backend**: CommerceTools
@@ -28,6 +35,13 @@ Each domain should contain:
 │   ├── domain/        # Types, interfaces, business logic
 │   └── ui/            # Domain-specific UI components
 ```
+
+## What not to do
+
+- don't optimize prematurely
+- currently testing is not a priority
+- don't introduce complicated desgin patterns unless it is really neccessary
+- don't optimize prematurally
 
 ## Development Preferences
 
