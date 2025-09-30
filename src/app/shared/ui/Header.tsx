@@ -7,7 +7,6 @@ import {
   CloseIcon,
   SearchIcon,
   StackIcon,
-  UserFilledIcon,
 } from '@commercetools-uikit/icons'
 import Spacings from '@commercetools-uikit/spacings'
 import Text from '@commercetools-uikit/text'
@@ -26,6 +25,11 @@ const DesktopNavigationElements = styled.div`
   @media only screen and (max-width: 768px) {
     display: none;
   }
+`
+
+const LoginButtonWrapper = styled.div`
+  padding-top: 7px;
+  padding-left: 7px;
 `
 
 const ButtonWrapper = styled.div.withConfig({
@@ -127,10 +131,9 @@ export default function Header() {
               ) : (
                 <Spacings.Inline scale='xs'>
                   <Link href='/en-US/login'>
-                    <FlatButton label='Login' />
-                  </Link>
-                  <Link href='/en-US/register'>
-                    <FlatButton label='Register' />
+                    <LoginButtonWrapper>
+                      <FlatButton label='Login' />
+                    </LoginButtonWrapper>
                   </Link>
                 </Spacings.Inline>
               )}
@@ -154,7 +157,6 @@ export default function Header() {
                 <Text.Detail tone='secondary'>Locale: </Text.Detail>
               </div>
 
-              {/* Authentication section */}
               <div className='pt-2 pb-3 border-b border-gray-200'>
                 {isAuthenticated ? (
                   <Spacings.Stack scale='xs'>
@@ -164,11 +166,6 @@ export default function Header() {
                 ) : (
                   <Spacings.Stack scale='xs'>
                     <FlatButton as='a' href='/en-US/login' label='Login' />
-                    <FlatButton
-                      as='a'
-                      href='/en-US/register'
-                      label='Register'
-                    />
                   </Spacings.Stack>
                 )}
               </div>

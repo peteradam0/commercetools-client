@@ -162,7 +162,6 @@ const LoginForm: React.FC = () => {
                   onChange={e => handleInputChange('email', e.target.value)}
                   onBlur={() => validateField('email', formState.data.email)}
                   hasError={!!formState.fieldErrors.email}
-                  isRequired
                 />
                 {formState.fieldErrors.email && (
                   <ErrorText>{formState.fieldErrors.email}</ErrorText>
@@ -179,7 +178,6 @@ const LoginForm: React.FC = () => {
                     validateField('password', formState.data.password)
                   }
                   hasError={!!formState.fieldErrors.password}
-                  isRequired
                 />
                 {formState.fieldErrors.password && (
                   <ErrorText>{formState.fieldErrors.password}</ErrorText>
