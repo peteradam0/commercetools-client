@@ -5,11 +5,11 @@ import { useMemo, useState } from 'react'
 import styled from 'styled-components'
 
 import { useCart } from '@/cart/domain/useCart'
-import { Product, ProductFilters } from '@/product-listing/domain/Product.types'
 import {
   mockCategories,
   searchSuggestions,
 } from '@/product-listing/domain/mockData'
+import { Product, ProductFilters } from '@/product-listing/domain/Product.types'
 import { filterProducts } from '@/product-listing/domain/search.utils'
 import { CategoryFilter } from '@/product-listing/ui/CategoryFilter'
 import { ProductGrid, SortOption } from '@/product-listing/ui/ProductGrid'

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import { execSync } from 'child_process'
 import fs from 'fs'
-import { glob } from 'glob'
 import path from 'path'
+
+import { glob } from 'glob'
 
 function convertRelativeToAbsolute(filePath, content) {
   const lines = content.split('\n')

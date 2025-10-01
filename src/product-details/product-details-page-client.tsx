@@ -13,11 +13,11 @@ import { ColorOption, ColorSelector } from '@/product-details/ColorSelector'
 import { ProductImageGallery } from '@/product-details/ProductImageGallery'
 import { ProductInfo } from '@/product-details/ProductInfo'
 import { SizeSelector } from '@/product-details/SizeSelector'
-import { Product } from '@/product-listing/domain/Product.types'
 import {
   getColorImages,
   getProductVariations,
 } from '@/product-listing/domain/mockData'
+import { Product } from '@/product-listing/domain/Product.types'
 
 const Container = styled.div`
   max-width: 1200px;
