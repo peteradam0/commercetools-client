@@ -140,7 +140,16 @@ export default [
       // Code style
       quotes: ['error', 'single', { allowTemplateLiterals: true }],
       semi: ['error', 'never'],
-      'comma-dangle': ['error', 'always-multiline'],
+      'comma-dangle': [
+        'error',
+        {
+          arrays: 'always-multiline',
+          objects: 'always-multiline',
+          imports: 'always-multiline',
+          exports: 'always-multiline',
+          functions: 'never', // Don't require trailing comma for function parameters
+        },
+      ],
       'object-curly-spacing': ['error', 'always'],
       'array-bracket-spacing': ['error', 'never'],
       // indent: ['error', 2], // Disabled due to stack overflow issues with styled-components
