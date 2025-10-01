@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { queryKeys } from '@/lib/queryKeys'
-
-import { Product, ProductFilters } from '../domain/Product.types'
-import { productService } from './productService'
+import { productService } from '@/product-listing/api/productService'
+import { ProductFilters } from '@/product-listing/domain/Product.types'
 
 // React Query hooks
 export const useProducts = (filters?: ProductFilters) => {

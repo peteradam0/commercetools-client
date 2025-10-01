@@ -1,4 +1,5 @@
-import { LoginFormData } from './Auth.types'
+import { LoginFormData } from '@/auth/domain/Auth.types'
+
 import {
   FieldValidationResult,
   RegistrationFormData,

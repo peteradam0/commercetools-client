@@ -1,6 +1,6 @@
 'use client'
 
-import { Cart, CartStorageData } from '../domain/Cart.types'
+import { Cart, CartStorageData } from '@/cart/domain/Cart.types'
 
 const CART_STORAGE_KEY = 'commercetools_cart'
 const STORAGE_EXPIRY_HOURS = 24 * 7 // 7 days
@@ -14,7 +14,6 @@ export class CartStorageService {
       }
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(data))
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error('Failed to save cart to localStorage:', error)
     }
   }

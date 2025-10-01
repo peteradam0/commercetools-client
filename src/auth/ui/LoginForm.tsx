@@ -10,9 +10,9 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { LoginFormData, LoginFormState } from '../domain/Auth.types'
-import { useAuth } from '../domain/AuthContext'
-import { validateEmail, validatePassword } from '../domain/validation.utils'
+import { LoginFormData, LoginFormState } from '@/auth/domain/Auth.types'
+import { useAuth } from '@/auth/domain/AuthContext'
+import { validateEmail, validatePassword } from '@/auth/domain/validation.utils'
 
 const StyledCard = styled(Card)`
   max-width: 400px;
@@ -133,7 +133,8 @@ const LoginForm: React.FC = () => {
 
     try {
       await login(formState.data)
-    } catch (error) {
+    } catch (_error) {
+      console.log(_error)
       setFormState(prev => ({
         ...prev,
         isSubmitting: false,
@@ -204,7 +205,7 @@ const LoginForm: React.FC = () => {
 
           <LinkText>
             <Text.Detail>
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <Link href='/en-US/register'>Create one here</Link>
             </Text.Detail>
           </LinkText>

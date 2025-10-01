@@ -3,7 +3,12 @@
 import { useRouter } from 'next/navigation'
 import React, { ReactNode, createContext, useContext, useReducer } from 'react'
 
-import { AuthContextType, AuthState, LoginFormData, User } from './Auth.types'
+import {
+  AuthContextType,
+  AuthState,
+  LoginFormData,
+  User,
+} from '@/auth/domain/Auth.types'
 
 const initialState: AuthState = {
   user: null,
@@ -133,7 +138,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       try {
         const user = JSON.parse(storedUser)
         dispatch({ type: 'LOGIN_SUCCESS', payload: user })
-      } catch (error) {
+      } catch (_error) {
+        console.log(_error)
         localStorage.removeItem('user')
       }
     }

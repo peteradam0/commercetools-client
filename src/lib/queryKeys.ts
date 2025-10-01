@@ -2,10 +2,10 @@ export const queryKeys = {
   // Product queries
   products: {
     all: ['products'] as const,
-    list: (filters?: Record<string, any>) =>
+    list: (filters?: Record<string, unknown>) =>
       [...queryKeys.products.all, 'list', filters] as const,
     detail: (id: string) => [...queryKeys.products.all, 'detail', id] as const,
-    search: (query: string, filters?: Record<string, any>) =>
+    search: (query: string, filters?: Record<string, unknown>) =>
       [...queryKeys.products.all, 'search', query, filters] as const,
     categories: () => [...queryKeys.products.all, 'categories'] as const,
   },

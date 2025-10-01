@@ -9,8 +9,8 @@ import {
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { CartItem as CartItemType } from '../domain/Cart.types'
-import { formatPrice } from '../domain/cart.utils'
+import { CartItem as CartItemType } from '@/cart/domain/Cart.types'
+import { formatPrice } from '@/cart/domain/cart.utils'
 
 const CartItemContainer = styled.div`
   display: flex;
@@ -170,7 +170,8 @@ export const CartItem: React.FC<CartItemProps> = ({
     try {
       await onUpdateQuantity(item.id, newQuantity)
       setLocalQuantity(newQuantity)
-    } catch (error) {
+    } catch (_error) {
+      console.log(_error)
       // Reset to previous value on error
       setLocalQuantity(item.quantity)
     } finally {

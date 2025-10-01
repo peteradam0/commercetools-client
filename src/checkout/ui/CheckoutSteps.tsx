@@ -3,7 +3,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { CheckoutStep } from '../domain/Checkout.types'
+import { CheckoutStep } from '@/checkout/domain/Checkout.types'
 
 const StepsContainer = styled.div`
   display: flex;

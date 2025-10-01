@@ -9,6 +9,11 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import {
+  mockPaymentMethods,
+  mockShippingMethods,
+} from '@/checkout/domain/mockData'
+
+import {
   BillingAddress,
   CreditCardInfo,
   PaymentInfo,
@@ -21,7 +26,6 @@ import {
   validateBillingAddress,
   validateCreditCard,
 } from '../domain/checkout.utils'
-import { mockPaymentMethods, mockShippingMethods } from '../domain/mockData'
 
 const FormContainer = styled.div`
   background: white;
@@ -264,7 +268,10 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
     }
   }
 
-  const handleSameAsShippingChange = (checked: boolean) => {
+  const handleSameAsShippingChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const checked = e.target.checked
     setSameAsShipping(checked)
     if (checked) {
       setBillingAddress({ ...shippingAddress, sameAsShipping: true })
@@ -344,7 +351,7 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
             >
               <MethodHeader>
                 <MethodName>{method.name}</MethodName>
-                <MethodPrice>{method.price.formatted}</MethodPrice>
+                <MethodPrice>${method.price.amount.toFixed(2)}</MethodPrice>
               </MethodHeader>
               <MethodDescription>{method.description}</MethodDescription>
             </MethodCard>

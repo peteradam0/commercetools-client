@@ -8,14 +8,13 @@ import {
   useReducer,
 } from 'react'
 
+import { CartStorageService } from '@/cart/api/cartStorage.service'
 import { Product } from '@/product-listing/domain/Product.types'
 
-import { CartStorageService } from '../api/cartStorage.service'
 import {
   AddToCartPayload,
   Cart,
   CartContextType,
-  CartItem,
   CartState,
   RemoveFromCartPayload,
   UpdateCartItemPayload,
@@ -104,7 +103,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         const emptyCart = createEmptyCart()
         dispatch({ type: 'LOAD_CART_SUCCESS', payload: emptyCart })
       }
-    } catch (error) {
+    } catch (_error) {
+      console.log(_error)
       dispatch({ type: 'LOAD_CART_ERROR', payload: 'Failed to load cart' })
     }
   }, [])
@@ -172,7 +172,17 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         }
 
         if (quantity === 0) {
-          await removeFromCart({ itemId })
+          // Remove item from cart when quantity is 0
+          const updatedItems = state.cart.items.filter(
+            item => item.id !== itemId
+          )
+          let updatedCart = {
+            ...state.cart,
+            items: updatedItems,
+          }
+          updatedCart = updateCartSummary(updatedCart)
+          CartStorageService.saveCart(updatedCart)
+          dispatch({ type: 'UPDATE_CART_SUCCESS', payload: updatedCart })
           return
         }
 
@@ -236,7 +246,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       const emptyCart = createEmptyCart()
       CartStorageService.clearCart()
       dispatch({ type: 'CLEAR_CART_SUCCESS', payload: emptyCart })
-    } catch (error) {
+    } catch (_error) {
+      console.log(_error)
       const emptyCart = createEmptyCart()
       dispatch({ type: 'CLEAR_CART_SUCCESS', payload: emptyCart })
     }

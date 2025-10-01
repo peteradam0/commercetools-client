@@ -12,7 +12,6 @@ import { useCart } from '@/cart/domain/useCart'
 
 import {
   BillingAddress,
-  CheckoutActions,
   CheckoutContextType,
   CheckoutData,
   CheckoutState,
@@ -26,7 +25,6 @@ import {
   calculateCheckoutSummary,
   createCheckoutSteps,
   createInitialCheckoutData,
-  getNextIncompleteStep,
   validateCheckoutStep,
 } from './checkout.utils'
 
@@ -150,10 +148,7 @@ export const CheckoutProvider: React.FC<CheckoutProviderProps> = ({
   // Update cart and summary when cart changes
   useEffect(() => {
     if (cart) {
-      const summary = calculateCheckoutSummary(
-        cart,
-        state.checkoutData.shippingMethod?.id
-      )
+      calculateCheckoutSummary(cart, state.checkoutData.shippingMethod?.id)
       dispatch({ type: 'UPDATE_CHECKOUT_DATA', payload: {} })
     }
   }, [cart, state.checkoutData.shippingMethod?.id])

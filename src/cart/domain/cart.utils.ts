@@ -1,6 +1,5 @@
+import { Cart, CartItem, CartSummary } from '@/cart/domain/Cart.types'
 import { Price, Product } from '@/product-listing/domain/Product.types'
-
-import { Cart, CartItem, CartSummary } from './Cart.types'
 
 const TAX_RATE = 0.08
 

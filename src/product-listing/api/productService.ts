@@ -66,7 +66,7 @@ export class ProductService extends BaseService {
   }
 
   async getProducts(filters?: ProductFilters): Promise<ProductListResponse> {
-    let queryArgs: any = {
+    const queryArgs: { [key: string]: string | number | boolean | string[] } = {
       limit: 20,
       offset: 0,
     }
@@ -105,16 +105,26 @@ export class ProductService extends BaseService {
       queryArgs.where = whereConditions
     }
 
-    return this.execute(() =>
-      this.apiRoot.productProjections().search().get({ queryArgs })
-    ).then(response => this.transformProductListResponse(response))
+    return this.execute(async () => {
+      const response = await this.apiRoot
+        .productProjections()
+        .search()
+        .get({ queryArgs })
+        .execute()
+      return response
+    }).then(response => this.transformProductListResponse(response))
   }
 
   async getProduct(id: string): Promise<Product | null> {
     try {
-      const ctProduct = await this.execute(() =>
-        this.apiRoot.productProjections().withId({ ID: id }).get()
-      )
+      const ctProduct = await this.execute(async () => {
+        const response = await this.apiRoot
+          .productProjections()
+          .withId({ ID: id })
+          .get()
+          .execute()
+        return response
+      })
 
       return this.transformProduct(ctProduct)
     } catch (error) {
@@ -127,7 +137,10 @@ export class ProductService extends BaseService {
   }
 
   async getCategories() {
-    return this.execute(() => this.apiRoot.categories().get()).then(response =>
+    return this.execute(async () => {
+      const response = await this.apiRoot.categories().get().execute()
+      return response
+    }).then(response =>
       response.results.map(category => ({
         id: category.id,
         name:

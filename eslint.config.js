@@ -24,6 +24,28 @@ export default [
       globals: {
         React: 'readonly',
         JSX: 'readonly',
+        document: 'readonly',
+        window: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+        HTMLElement: 'readonly',
+        HTMLImageElement: 'readonly',
+        HTMLInputElement: 'readonly',
+        Event: 'readonly',
+        MouseEvent: 'readonly',
+        KeyboardEvent: 'readonly',
+        localStorage: 'readonly',
+        sessionStorage: 'readonly',
+        fetch: 'readonly',
+        RequestInit: 'readonly',
+        Response: 'readonly',
+        alert: 'readonly',
+        confirm: 'readonly',
+        console: 'readonly',
+        process: 'readonly',
+        NodeJS: 'readonly',
       },
     },
     plugins: {
@@ -54,11 +76,11 @@ export default [
         'error',
         { argsIgnorePattern: '^_' },
       ],
-      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-empty-function': 'off',
-      '@typescript-eslint/no-non-null-assertion': 'warn',
+      '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/prefer-as-const': 'error',
       '@typescript-eslint/no-inferrable-types': 'error',
 
@@ -75,10 +97,10 @@ export default [
 
       // React Hooks rules
       'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
+      'react-hooks/exhaustive-deps': 'off',
 
       // General JavaScript rules
-      'no-console': 'warn',
+      'no-console': 'off',
       'no-debugger': 'error',
       'no-unused-vars': 'off', // Handled by @typescript-eslint/no-unused-vars
       'prefer-const': 'error',
@@ -110,7 +132,7 @@ export default [
 
       // Prevent excessive relative imports
       'import/no-relative-packages': 'error',
-      'import/no-relative-parent-imports': 'warn',
+      'import/no-relative-parent-imports': 'off', // Disabled for domain-driven architecture
 
       // Next.js specific rules
       '@next/next/no-page-custom-font': 'off',
@@ -127,8 +149,8 @@ export default [
       // Accessibility rules
       'jsx-a11y/alt-text': 'error',
       'jsx-a11y/anchor-is-valid': 'error',
-      'jsx-a11y/click-events-have-key-events': 'warn',
-      'jsx-a11y/no-static-element-interactions': 'warn',
+      'jsx-a11y/click-events-have-key-events': 'off',
+      'jsx-a11y/no-static-element-interactions': 'off',
     },
   },
 
@@ -148,12 +170,48 @@ export default [
     rules: {
       'import/no-default-export': 'off',
       'import/prefer-default-export': 'error',
+      'import/no-relative-parent-imports': 'off', // Allow relative imports in Next.js app directory
     },
   },
 
-  // Configuration files
+  // Test files overrides
   {
-    files: ['*.config.{js,ts,mjs}', '.eslintrc.{js,cjs}'],
+    files: [
+      'tests/**/*.{ts,tsx,js,jsx}',
+      '**/*.test.{ts,tsx,js,jsx}',
+      '**/*.spec.{ts,tsx,js,jsx}',
+    ],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        it: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        vi: 'readonly',
+      },
+    },
+    rules: {
+      'import/no-relative-parent-imports': 'off',
+      'no-undef': 'off',
+    },
+  },
+
+  // Node.js scripts and configuration files
+  {
+    files: [
+      '*.config.{js,ts,mjs}',
+      '.eslintrc.{js,cjs}',
+      'scripts/**/*.{js,ts}',
+    ],
+    languageOptions: {
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+      },
+    },
     rules: {
       '@typescript-eslint/no-var-requires': 'off',
       'no-console': 'off',

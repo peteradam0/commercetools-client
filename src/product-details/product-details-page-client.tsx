@@ -9,16 +9,15 @@ import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 
 import { useCart } from '@/cart/domain/useCart'
+import { ColorOption, ColorSelector } from '@/product-details/ColorSelector'
+import { ProductImageGallery } from '@/product-details/ProductImageGallery'
+import { ProductInfo } from '@/product-details/ProductInfo'
+import { SizeSelector } from '@/product-details/SizeSelector'
 import { Product } from '@/product-listing/domain/Product.types'
 import {
   getColorImages,
   getProductVariations,
 } from '@/product-listing/domain/mockData'
-
-import { ColorOption, ColorSelector } from './ColorSelector'
-import { ProductImageGallery } from './ProductImageGallery'
-import { ProductInfo } from './ProductInfo'
-import { SizeSelector } from './SizeSelector'
 
 const Container = styled.div`
   max-width: 1200px;

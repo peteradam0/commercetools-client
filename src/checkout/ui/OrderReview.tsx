@@ -9,9 +9,8 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import { CartItem } from '@/cart/domain/Cart.types'
-
-import { CheckoutData, CheckoutSummary } from '../domain/Checkout.types'
-import { maskCardNumber } from '../domain/checkout.utils'
+import { CheckoutData, CheckoutSummary } from '@/checkout/domain/Checkout.types'
+import { maskCardNumber } from '@/checkout/domain/checkout.utils'
 
 const ReviewContainer = styled.div`
   display: grid;
@@ -252,7 +251,9 @@ export const OrderReview: React.FC<OrderReviewProps> = ({
             {items.map(item => (
               <OrderItem key={item.id}>
                 <ItemImage
-                  src={item.product.imageUrl}
+                  src={
+                    item.product.images[0]?.url || '/placeholder-product.jpg'
+                  }
                   alt={item.product.name}
                   onError={e => {
                     e.currentTarget.src = '/placeholder-product.jpg'
@@ -262,7 +263,7 @@ export const OrderReview: React.FC<OrderReviewProps> = ({
                   <ItemName>{item.product.name}</ItemName>
                   <ItemQuantity>Quantity: {item.quantity}</ItemQuantity>
                 </ItemDetails>
-                <ItemPrice>{item.totalPrice.formatted}</ItemPrice>
+                <ItemPrice>${item.totalPrice.amount.toFixed(2)}</ItemPrice>
               </OrderItem>
             ))}
           </OrderItems>
@@ -313,8 +314,8 @@ export const OrderReview: React.FC<OrderReviewProps> = ({
             <InfoTitle>Shipping Method</InfoTitle>
             {checkoutData.shippingMethod && (
               <InfoText>
-                {checkoutData.shippingMethod.name} -{' '}
-                {checkoutData.shippingMethod.price.formatted} (
+                {checkoutData.shippingMethod.name} - $
+                {checkoutData.shippingMethod.price.amount.toFixed(2)} (
                 {checkoutData.shippingMethod.deliveryTime})
               </InfoText>
             )}
@@ -349,7 +350,7 @@ export const OrderReview: React.FC<OrderReviewProps> = ({
             <CheckboxRow>
               <CheckboxInput
                 isChecked={agreeToTerms}
-                onChange={setAgreeToTerms}
+                onChange={e => setAgreeToTerms(e.target.checked)}
                 isDisabled={isSubmitting}
               >
                 I agree to the Terms and Conditions and Privacy Policy *
@@ -359,7 +360,7 @@ export const OrderReview: React.FC<OrderReviewProps> = ({
             <CheckboxRow>
               <CheckboxInput
                 isChecked={subscribeToNewsletter}
-                onChange={setSubscribeToNewsletter}
+                onChange={e => setSubscribeToNewsletter(e.target.checked)}
                 isDisabled={isSubmitting}
               >
                 Subscribe to our newsletter for updates and promotions
@@ -387,22 +388,22 @@ export const OrderReview: React.FC<OrderReviewProps> = ({
 
         <SummaryRow>
           <span>Subtotal</span>
-          <span>{summary.subtotal.formatted}</span>
+          <span>${summary.subtotal.amount.toFixed(2)}</span>
         </SummaryRow>
 
         <SummaryRow>
           <span>Shipping</span>
-          <span>{summary.shipping.formatted}</span>
+          <span>${summary.shipping.amount.toFixed(2)}</span>
         </SummaryRow>
 
         <SummaryRow>
           <span>Tax</span>
-          <span>{summary.tax.formatted}</span>
+          <span>${summary.tax.amount.toFixed(2)}</span>
         </SummaryRow>
 
         <SummaryRow $isTotal>
           <span>Total</span>
-          <span>{summary.total.formatted}</span>
+          <span>${summary.total.amount.toFixed(2)}</span>
         </SummaryRow>
       </SummaryCard>
     </ReviewContainer>

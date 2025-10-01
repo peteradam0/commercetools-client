@@ -1,15 +1,20 @@
 export interface ApiError extends Error {
   status?: number
   code?: string
-  details?: any
+  details?: unknown
 }
 
 export class ApiClientError extends Error implements ApiError {
   status?: number
   code?: string
-  details?: any
+  details?: unknown
 
-  constructor(message: string, status?: number, code?: string, details?: any) {
+  constructor(
+    message: string,
+    status?: number,
+    code?: string,
+    details?: unknown
+  ) {
     super(message)
     this.name = 'ApiClientError'
     this.status = status
@@ -18,13 +23,13 @@ export class ApiClientError extends Error implements ApiError {
   }
 }
 
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   data: T
   status: number
   headers: Record<string, string>
 }
 
-export interface PaginatedResponse<T = any> {
+export interface PaginatedResponse<T = unknown> {
   results: T[]
   total: number
   offset: number
@@ -33,8 +38,36 @@ export interface PaginatedResponse<T = any> {
 }
 
 // Base API client utility functions
-export const apiClient = {
-  async request<T = any>(
+export const apiClient: {
+  request: <T = unknown>(
+    url: string,
+    options?: RequestInit
+  ) => Promise<ApiResponse<T>>
+  get: <T = unknown>(
+    url: string,
+    options?: RequestInit
+  ) => Promise<ApiResponse<T>>
+  post: <T = unknown>(
+    url: string,
+    data?: unknown,
+    options?: RequestInit
+  ) => Promise<ApiResponse<T>>
+  put: <T = unknown>(
+    url: string,
+    data?: unknown,
+    options?: RequestInit
+  ) => Promise<ApiResponse<T>>
+  patch: <T = unknown>(
+    url: string,
+    data?: unknown,
+    options?: RequestInit
+  ) => Promise<ApiResponse<T>>
+  delete: <T = unknown>(
+    url: string,
+    options?: RequestInit
+  ) => Promise<ApiResponse<T>>
+} = {
+  async request<T = unknown>(
     url: string,
     options: RequestInit = {}
   ): Promise<ApiResponse<T>> {
@@ -96,53 +129,53 @@ export const apiClient = {
     }
   },
 
-  async get<T = any>(
+  async get<T = unknown>(
     url: string,
     options?: RequestInit
   ): Promise<ApiResponse<T>> {
-    return this.request<T>(url, { method: 'GET', ...options })
+    return apiClient.request<T>(url, { method: 'GET', ...options })
   },
 
-  async post<T = any>(
+  async post<T = unknown>(
     url: string,
-    data?: any,
+    data?: unknown,
     options?: RequestInit
   ): Promise<ApiResponse<T>> {
-    return this.request<T>(url, {
+    return apiClient.request<T>(url, {
       method: 'POST',
       body: data ? JSON.stringify(data) : undefined,
       ...options,
     })
   },
 
-  async put<T = any>(
+  async put<T = unknown>(
     url: string,
-    data?: any,
+    data?: unknown,
     options?: RequestInit
   ): Promise<ApiResponse<T>> {
-    return this.request<T>(url, {
+    return apiClient.request<T>(url, {
       method: 'PUT',
       body: data ? JSON.stringify(data) : undefined,
       ...options,
     })
   },
 
-  async patch<T = any>(
+  async patch<T = unknown>(
     url: string,
-    data?: any,
+    data?: unknown,
     options?: RequestInit
   ): Promise<ApiResponse<T>> {
-    return this.request<T>(url, {
+    return apiClient.request<T>(url, {
       method: 'PATCH',
       body: data ? JSON.stringify(data) : undefined,
       ...options,
     })
   },
 
-  async delete<T = any>(
+  async delete<T = unknown>(
     url: string,
     options?: RequestInit
   ): Promise<ApiResponse<T>> {
-    return this.request<T>(url, { method: 'DELETE', ...options })
+    return apiClient.request<T>(url, { method: 'DELETE', ...options })
   },
 }

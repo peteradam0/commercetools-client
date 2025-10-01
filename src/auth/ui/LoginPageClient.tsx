@@ -4,7 +4,7 @@ import Spacings from '@commercetools-uikit/spacings'
 import React from 'react'
 import styled from 'styled-components'
 
-import LoginForm from './LoginForm'
+import LoginForm from '@/auth/ui/LoginForm'
 
 const PageContainer = styled.div`
   min-height: 100vh;

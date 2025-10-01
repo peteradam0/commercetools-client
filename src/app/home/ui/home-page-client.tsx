@@ -1,5 +1,6 @@
+import { HeroGallery } from '@/app/home/ui/HeroGallery/HeroGallery'
+
 import { THeroImage } from '../../../../public/home/heroImages'
-import { HeroGallery } from './HeroGallery/HeroGallery'
 
 export type HomePageClientProps = {
   heroImages: THeroImage[]

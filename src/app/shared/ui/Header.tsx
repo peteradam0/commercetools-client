@@ -16,9 +16,8 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
+import { CartIconWithCount } from '@/app/shared/ui/CartIconWithCount'
 import { useAuth } from '@/auth/domain/AuthContext'
-
-import { CartIconWithCount } from './CartIconWithCount'
 
 const DesktopNavigationElements = styled.div`
   display: flex;

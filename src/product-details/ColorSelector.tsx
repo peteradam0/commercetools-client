@@ -8,7 +8,7 @@ const ColorOptionsContainer = styled.div`
   flex-wrap: wrap;
 `
 
-const ColorOption = styled.button<{ $color: string; $selected: boolean }>`
+const ColorOptionButton = styled.button<{ $color: string; $selected: boolean }>`
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -74,7 +74,7 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({
       <ColorLabel>{displayLabel}</ColorLabel>
       <ColorOptionsContainer>
         {colors.map(color => (
-          <ColorOption
+          <ColorOptionButton
             key={color.id}
             $color={color.hex}
             $selected={selectedColorId === color.id}

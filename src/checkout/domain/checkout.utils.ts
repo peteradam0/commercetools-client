@@ -42,7 +42,7 @@ export const calculateShippingCost = (
   shippingMethodId?: string
 ): Price => {
   if (!cart || !shippingMethodId) {
-    return { amount: 0, currencyCode: 'USD', formatted: '$0.00' }
+    return { amount: 0, currencyCode: 'USD' }
   }
 
   // Mock shipping calculation - in real app, this would call an API
@@ -57,13 +57,12 @@ export const calculateShippingCost = (
   return {
     amount: cost,
     currencyCode: 'USD',
-    formatted: `$${cost.toFixed(2)}`,
   }
 }
 
 export const calculateTax = (cart: Cart | null, shipping: Price): Price => {
   if (!cart) {
-    return { amount: 0, currencyCode: 'USD', formatted: '$0.00' }
+    return { amount: 0, currencyCode: 'USD' }
   }
 
   // Mock tax calculation (8% tax rate)
@@ -73,7 +72,6 @@ export const calculateTax = (cart: Cart | null, shipping: Price): Price => {
   return {
     amount: taxAmount,
     currencyCode: 'USD',
-    formatted: `$${taxAmount.toFixed(2)}`,
   }
 }
 
@@ -82,7 +80,7 @@ export const calculateCheckoutSummary = (
   shippingMethodId?: string
 ): CheckoutSummary => {
   if (!cart) {
-    const zero: Price = { amount: 0, currencyCode: 'USD', formatted: '$0.00' }
+    const zero: Price = { amount: 0, currencyCode: 'USD' }
     return {
       subtotal: zero,
       shipping: zero,
@@ -99,7 +97,6 @@ export const calculateCheckoutSummary = (
   const total: Price = {
     amount: totalAmount,
     currencyCode: 'USD',
-    formatted: `$${totalAmount.toFixed(2)}`,
   }
 
   return {
@@ -237,7 +234,8 @@ export const validateCheckoutStep = (
     case 0: // Shipping step
       return validateShippingAddress(checkoutData.shippingAddress)
 
-    case 1: // Payment step
+    case 1: {
+      // Payment step
       const billingValidation = validateBillingAddress(
         checkoutData.billingAddress
       )
@@ -267,6 +265,7 @@ export const validateCheckoutStep = (
       }
 
       return { isValid: true, errors: {} }
+    }
 
     case 2: // Review step
       if (!checkoutData.agreeToTerms) {

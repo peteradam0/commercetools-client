@@ -126,7 +126,17 @@ export const ProductSearch: React.FC<ProductSearchProps> = ({
           placeholder='Search for products...'
           disabled={loading}
         />
-        <div onBlur={handleInputBlur} onFocus={handleInputFocus}>
+        <div
+          role='combobox'
+          tabIndex={0}
+          onBlur={handleInputBlur}
+          onFocus={handleInputFocus}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+            }
+          }}
+        >
           {showSuggestions && suggestions.length > 0 && (
             <SuggestionsList>
               {suggestions.slice(0, 5).map((suggestion, index) => (

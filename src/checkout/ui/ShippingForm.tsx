@@ -4,9 +4,12 @@ import { PrimaryButton, SecondaryButton } from '@commercetools-frontend/ui-kit'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { ShippingAddress, ValidationResult } from '../domain/Checkout.types'
-import { validateShippingAddress } from '../domain/checkout.utils'
-import { mockCountries } from '../domain/mockData'
+import {
+  ShippingAddress,
+  ValidationResult,
+} from '@/checkout/domain/Checkout.types'
+import { validateShippingAddress } from '@/checkout/domain/checkout.utils'
+import { mockCountries } from '@/checkout/domain/mockData'
 
 const FormContainer = styled.div`
   background: white;

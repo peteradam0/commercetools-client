@@ -4,8 +4,8 @@ import { PrimaryButton, SecondaryButton } from '@commercetools-frontend/ui-kit'
 import React from 'react'
 import styled from 'styled-components'
 
-import { CartSummary as CartSummaryType } from '../domain/Cart.types'
-import { formatPrice } from '../domain/cart.utils'
+import { CartSummary as CartSummaryType } from '@/cart/domain/Cart.types'
+import { formatPrice } from '@/cart/domain/cart.utils'
 
 const SummaryContainer = styled.div`
   background: #f8f9fa;

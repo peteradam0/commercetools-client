@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useMemo, useState } from 'react'
 import styled from 'styled-components'
 
+import { useCart } from '@/cart/domain/useCart'
 import { Product, ProductFilters } from '@/product-listing/domain/Product.types'
 import {
   mockCategories,
@@ -13,8 +14,6 @@ import { filterProducts } from '@/product-listing/domain/search.utils'
 import { CategoryFilter } from '@/product-listing/ui/CategoryFilter'
 import { ProductGrid, SortOption } from '@/product-listing/ui/ProductGrid'
 import { ProductSearch } from '@/product-listing/ui/ProductSearch'
-
-import { useCart } from '../cart/domain/useCart'
 
 export type ProductListingPageClientProps = {
   mockProducts: Product[]
@@ -94,7 +93,7 @@ export const ProductListingPageClient: React.FC<
 
   const filteredProducts = useMemo(() => {
     return filterProducts(mockProducts, filters)
-  }, [filters])
+  }, [filters, mockProducts])
 
   const handleSearch = (query: string) => {
     setSearchQuery(query)
@@ -193,7 +192,7 @@ export const ProductListingPageClient: React.FC<
           }
           emptyStateDescription={
             searchQuery
-              ? `No products match your search for \"${searchQuery}\". Try different keywords or browse our categories.`
+              ? `No products match your search for "${searchQuery}". Try different keywords or browse our categories.`
               : 'There are no products available at the moment.'
           }
         />

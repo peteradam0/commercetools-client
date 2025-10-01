@@ -42,6 +42,7 @@ export interface ProductFilters {
     max: number
   }
   inStockOnly?: boolean
+  [key: string]: unknown
 }
 
 export interface ProductListResponse {

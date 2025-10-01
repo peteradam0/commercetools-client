@@ -1,5 +1,6 @@
-import { QueryProvider } from '../lib/QueryProvider'
-import StyledComponentsRegistry from '../lib/StyledComponentsRegistry'
+import { QueryProvider } from '@/lib/QueryProvider'
+import StyledComponentsRegistry from '@/lib/StyledComponentsRegistry'
+
 import './globals.css'
 
 export default function RootLayout({

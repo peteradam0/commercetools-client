@@ -29,15 +29,8 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   value,
   onChange,
   placeholder = 'Search products...',
-  onSubmit,
   disabled = false,
 }) => {
-  const handleKeyPress = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' && onSubmit) {
-      onSubmit()
-    }
-  }
-
   return (
     <SearchContainer>
       <SearchIcon>🔍</SearchIcon>
@@ -45,9 +38,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
         value={value}
         onChange={event => onChange(event.target.value)}
         placeholder={placeholder}
-        onKeyPress={handleKeyPress}
         isDisabled={disabled}
-        style={{ paddingLeft: '40px' }}
       />
     </SearchContainer>
   )
