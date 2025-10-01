@@ -108,28 +108,7 @@ export default [
       'no-undef': 'error',
 
       // Import rules (simplified for better compatibility)
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
-          'newlines-between': 'always',
-          pathGroups: [
-            {
-              pattern: '@/**',
-              group: 'internal',
-              position: 'before',
-            },
-          ],
-          pathGroupsExcludedImportTypes: ['builtin'],
-        },
-      ],
+      'import/order': 'off', // Disabled due to constant conflicts with auto-formatting
       'import/no-duplicates': 'off', // Disable due to resolver issues
       'import/no-unused-modules': 'off',
       'import/no-unresolved': 'off', // Let TypeScript handle this
