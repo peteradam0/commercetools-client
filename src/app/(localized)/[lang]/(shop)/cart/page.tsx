@@ -1,6 +1,5 @@
+import { CartPageClient } from '@/app/bounded-contexts/cart/ui/CartPageClient'
 import React from 'react'
-
-import { CartPageClient } from '@/cart/ui/CartPageClient'
 
 interface CartPageProps {
   params: Promise<{

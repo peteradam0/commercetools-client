@@ -1,7 +1,7 @@
-import Footer from '@/app/shared/ui/Footer'
-import Header from '@/app/shared/ui/Header'
-import { AuthProvider } from '@/auth/domain/AuthContext'
-import { CartProvider } from '@/cart/domain/useCart'
+import { AuthProvider } from '@/app/bounded-contexts/auth/domain/AuthContext'
+import { CartProvider } from '@/app/bounded-contexts/cart/domain/useCart'
+import Footer from '@/app/bounded-contexts/shared/ui/Footer'
+import Header from '@/app/bounded-contexts/shared/ui/Header'
 
 export default function ShopPagesLayout({
   children,

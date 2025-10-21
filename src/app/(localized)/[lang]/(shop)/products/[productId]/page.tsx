@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation'
 import React from 'react'
 
-import { ProductDetailsPageClient } from '@/product-details/product-details-page-client'
-import { mockProducts } from '@/product-listing/domain/mockData'
+import { ProductDetailsPageClient } from '@/app/bounded-contexts/product-details/product-details-page-client'
+import { mockProducts } from '@/app/bounded-contexts/product-listing/domain/mockData'
 
 interface ProductDetailsPageProps {
   params

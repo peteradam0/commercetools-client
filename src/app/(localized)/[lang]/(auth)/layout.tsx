@@ -1,4 +1,4 @@
-import { AuthProvider } from '@/auth/domain/AuthContext'
+import { AuthProvider } from '@/app/bounded-contexts/auth/domain/AuthContext'
 
 export default function AuthPagesLayout({
   children,

@@ -1,6 +1,5 @@
+import { CheckoutPageClient } from '@/app/bounded-contexts/checkout/ui/CheckoutPageClient'
 import React from 'react'
-
-import { CheckoutPageClient } from '@/checkout/ui/CheckoutPageClient'
 
 interface CheckoutPageProps {
   params: Promise<{
