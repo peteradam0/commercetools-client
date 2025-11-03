@@ -26,7 +26,7 @@ export const useProductSearch = (query: string, filters?: ProductFilters) => {
     queryKey: queryKeys.products.search(query, filters),
     queryFn: () =>
       productService.getProducts({ ...filters, searchQuery: query }),
-    enabled: query.length > 2, // Only search if query is longer than 2 characters
+    enabled: query.length > 2,
   })
 }
 

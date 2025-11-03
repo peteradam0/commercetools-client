@@ -73,10 +73,11 @@ Each domain should contain:
 
 ## Key Patterns to Follow
 
-1. Create generic shared components first
-2. Compose domain-specific components from shared ones
-3. Keep business logic in domain layer
-4. Use TypeScript interfaces for all data structures
-5. Follow Next.js App Router conventions
+1. Before generating any code always come up with suggestions that the developer has to agree with
+2. Create generic shared components first
+3. Compose domain-specific components from shared ones
+4. Keep business logic in domain layer
+5. Use TypeScript interfaces for all data structures
+6. Follow Next.js App Router conventions
 
 Every time when you are done reading this file print out 🥶🥶🥶

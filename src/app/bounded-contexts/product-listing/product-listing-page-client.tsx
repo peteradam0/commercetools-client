@@ -5,14 +5,15 @@ import { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { Product, ProductFilters } from './domain/Product.types'
 import { useCart } from '../cart/domain/useCart'
-import { searchSuggestions, mockCategories } from './domain/mockData'
+import { searchSuggestions } from './domain/mockData'
 import { filterProducts } from './domain/search.utils'
 import { CategoryFilter } from './ui/CategoryFilter'
 import { SortOption, ProductGrid } from './ui/ProductGrid'
 import { ProductSearch } from './ui/ProductSearch'
 
 export type ProductListingPageClientProps = {
-  mockProducts: Product[]
+  initialProducts: Product[]
+  initialCategories: Array<{ id: string; name: string; slug: string }>
 }
 
 const PageContainer = styled.div`
@@ -74,7 +75,7 @@ const ProductsSection = styled.div`
 `
 export const ProductListingPageClient: React.FC<
   ProductListingPageClientProps
-> = ({ mockProducts }) => {
+> = ({ initialProducts, initialCategories }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([])
   const [sortBy, setSortBy] = useState<SortOption>('name-asc')
@@ -87,9 +88,10 @@ export const ProductListingPageClient: React.FC<
     inStockOnly: false,
   }
 
+  // Client-side filtering of initial server data
   const filteredProducts = useMemo(() => {
-    return filterProducts(mockProducts, filters)
-  }, [filters, mockProducts])
+    return filterProducts(initialProducts, filters)
+  }, [initialProducts, filters])
 
   const handleSearch = (query: string) => {
     setSearchQuery(query)
@@ -115,7 +117,7 @@ export const ProductListingPageClient: React.FC<
   }
 
   const handleAddToCart = (productId: string) => {
-    const product = mockProducts.find(p => p.id === productId)
+    const product = initialProducts.find(p => p.id === productId)
     if (product) {
       addToCart({ productId: product.id })
     }
@@ -159,7 +161,7 @@ export const ProductListingPageClient: React.FC<
         />
 
         <CategoryFilter
-          categories={mockCategories}
+          categories={initialCategories}
           selectedCategoryIds={selectedCategoryIds}
           onCategoryToggle={handleCategoryToggle}
           onClearAll={handleClearCategories}
